@@ -18,3 +18,6 @@ variable "cluster_name" {
     type = string 
 }
 
+variable "health_check_path" {
+    type = string
+}
