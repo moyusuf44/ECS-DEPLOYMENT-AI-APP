@@ -21,3 +21,15 @@ variable "cluster_name" {
 variable "health_check_path" {
     type = string
 }
+
+variable "domain_name" {
+    type = string 
+}
+
+variable "subdomain" {
+    type = string 
+}
+
+variable "zone_id" {
+    type = string 
+}
