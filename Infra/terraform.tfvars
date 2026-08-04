@@ -7,5 +7,5 @@ domain_name       = ""
 subdomain         = "tm"
 zone_id           = ""
 zone_name         = ""
+region_id         = "eu-north-1"
 
-image_id = "592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v1"

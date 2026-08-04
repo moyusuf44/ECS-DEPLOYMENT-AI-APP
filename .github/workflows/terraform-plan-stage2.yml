@@ -1,11 +1,13 @@
-name: Terraform Apply DynamoDB Table
+name: Terraform Plan Stage 2 FULL
 
 on:
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-
-  terraform-apply:
+  terraform-plan:
 
     runs-on: ubuntu-latest
 
@@ -25,9 +27,13 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
-        working-directory: ./terraform-state-lock
+        working-directory: ./Infra
         run: terraform init
 
-      - name: Terraform Apply DynamoDB Table
-        working-directory: ./terraform-state-lock
-        run: terraform apply --auto-aprove
+      - name: Terraform Plan full (stage 2)
+        working-directory: ./Infra
+        run: |
+          terraform plan \
+          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v1" \
+          -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+          -var="code_server_password=${{ secrets.CODE_SERVER_PASSWORD }}"
