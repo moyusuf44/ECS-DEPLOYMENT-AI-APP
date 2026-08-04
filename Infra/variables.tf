@@ -33,3 +33,20 @@ variable "subdomain" {
 variable "zone_id" {
     type = string 
 }
+
+variable "zone_name" {
+    type = string 
+}
+
+variable "region_id" {
+    type = string 
+}
+
+variable "cidr_block" {
+  type        = string
+  default     = "10.0.0.0/22"
+}
+
+variable "cloudflare_api_token" {
+  type        = string
+}

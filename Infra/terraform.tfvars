@@ -6,5 +6,6 @@ health_check_path = "/"
 domain_name       = ""
 subdomain         = "tm"
 zone_id           = ""
+zone_name         = ""
 
 image_id = "592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v1"
