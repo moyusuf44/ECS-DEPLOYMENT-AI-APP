@@ -21,3 +21,6 @@ README.md
 # Screenshots
 *.png
 
+# Enviroment 
+.env
+

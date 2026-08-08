@@ -1,6 +1,8 @@
 # Terraform files
-
 dev.tfvars
 **/.terraform/*
 *.tfstate
 *.tfstate.*
+
+# Enviroment 
+.env 

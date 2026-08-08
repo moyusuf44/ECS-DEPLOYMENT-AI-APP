@@ -4,7 +4,9 @@ FROM python:3.11-slim AS build
 
 WORKDIR /app
 
-RUN pip install --no-cache-dir fastapi uvicorn openai 
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime Stage
 
@@ -16,9 +18,9 @@ COPY --from=build /usr/local/lib/python3.11/site-packages /usr/local/lib/python3
 COPY --from=build /usr/local/bin /usr/local/bin
 COPY app/ .
 
-ENV PYTHONPATH=/usr/bin/local/lib/python3.11/site-packages
+#ENV PYTHONPATH=/usr/bin/local/lib/python3.11/site-packages
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
