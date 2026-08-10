@@ -23,55 +23,74 @@ def root():
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status" : "ok"}
 
 @app.get("/ask")
 def ask_ai(question: str):
-    response = client.chat.completions.create(
-        model    = "gpt-4o-mini",
-        messages = [
-            {"role": "user", "content": question }
-        ],
-        max_tokens = 200
-    )
-    return {
-        "answer": response.choices[0].message.content
-    }
+    try:
+        response = client.chat.completions.create(
+            model    = "gpt-4o-mini",
+            messages = [
+                {"role": "user", "content": question }
+            ],
+            max_tokens = 200
+        )
+        return {
+            "answer": response.choices[0].message.content
+        }
+    except Exception as e: 
+        return {
+            "error"   : "Failed to get response",
+            "details" : str(e)
+        }
 
 @app.post("/chat")
 def chat(req: ChatRequest):
     MAX_HISTORY = 10
     MAX_TOKENS  = 200
 
-    if req.user_id not in conversations:
+    try:
+        if req.user_id not in conversations:
+            conversations[req.user_id] = [
+                {
+                "role": "system", 
+                "content": "You're a helpful AI assistant. Remember the details about the user"
+                }
+            ]
+
+        conversations[req.user_id].append({
+            "role"    : "user", 
+            "content" : req.message
+        })   
+
+        history = conversations[req.user_id][1:]
+        history = history[-MAX_HISTORY:]
+
         conversations[req.user_id] = [
-            {"role": "system", "content": "You're a helpful AI assistant"}
+            conversations[req.user_id][0],
+            *history
         ]
+        
+        response = client.chat.completions.create(
+            model      = "gpt-4o-mini",
+            messages   = conversations[req.user_id],
+            max_tokens = MAX_TOKENS
+        )
 
-    conversations[req.user_id].append({
-        "role"    : "user", 
-        "content" : req.message
-    })   
+        reply = response.choices[0].message.content
 
-    conversations[req.user_id] = (
-        [conversations[req.user_id][0]] +
-         conversations[req.user_id][-MAX_HISTORY:]
-    )
-    
+        conversations[req.user_id].append({
+            "role"    : "assistant",
+            "content" : reply
+        })
 
-    response = client.chat.completions.create(
-        model      = "gpt-4o-mini",
-        messages   = conversations[req.user_id]
-        max_tokens = MAX_TOKENS
-    )
+        return {
+            "reply" : reply
+        }
 
-    reply = response.choices[0].message.content
+    except Exception as e:
+        return {
+            "error"   : "Chat Failed",
+            "details" : str(e)
+        }
 
-    conversations[req.user_id].append({
-        "role"    : "assistant",
-        "content" : reply
-    })
-
-    return {
-        "reply" : reply
-    }
