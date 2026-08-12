@@ -51,10 +51,6 @@ variable "cloudflare_api_token" {
     type = string
 }
 
-variable "health_check_path" {
-    type = string
-}
-
 variable "vpc_id" {
     type = string
 }
