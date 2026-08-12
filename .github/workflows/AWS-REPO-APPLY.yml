@@ -33,4 +33,5 @@ jobs:
         run: |
           terraform apply \
           -target=module.ecr \
-          --auto-approve 
+          --auto-approve \
+          -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" 
