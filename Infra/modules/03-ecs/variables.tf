@@ -23,7 +23,7 @@ variable "subnets" {
 }
 
 variable "security_groups" {
-    type = string
+    type = list(string)
 }
 
 variable "target_group_arn" {

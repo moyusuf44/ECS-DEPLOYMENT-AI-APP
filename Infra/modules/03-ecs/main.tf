@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "this" {
     family                   = "ai-app-task"
     requires_compatibilities = ["FARGATE"]
 
-    network = "awsvpc"
+    network_mode = "awsvpc"
 
     cpu    = var.cpu
     memory = var.memory
@@ -43,7 +43,7 @@ resource "aws_ecs_service" "this" {
 
     network_configuration {
         subnets          = var.subnets
-        security_groups  = [var.security_group]
+        security_groups  = var.security_groups
         assign_public_ip = true 
     }
 
@@ -54,7 +54,7 @@ resource "aws_ecs_service" "this" {
     }
 }
 
-resource "aws_iam_role" "ecs_task_definition_role" {
+resource "aws_iam_role" "ecs_task_execution_role" {
     name = "ecsTaskExecutionRole"
 
     assume_role_policy = jsonencode ({

@@ -9,11 +9,11 @@ resource "cloudflare_dns_record" "acm_validation" {
         for idx, dvo in var.domain_validation_options :
         idx => dvo
     }
-    zone_id = data.cloudflare_dns.this.id
+    zone_id = var.zone_id
 
-    name    = each.record.resource_record.name
-    type    = each.record.resource_record.type
-    content = each.record.resource_record.value
+    name    = each.value.resource_record_name
+    type    = each.value.resource_record_type
+    content = each.value.resource_record_value
 
     ttl = 60 
 

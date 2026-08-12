@@ -9,7 +9,7 @@ module "ecs" {
     vpc_id                = module.vpc.vpc_id
     subnets               = module.vpc.public_subnets
     target_group_arn      = module.alb.target_group   
-    security_groups       = module.vpc.ecs_security_group_id    
+    security_groups       = module.vpc.ecs_security_group    
     subnet_ids            = module.vpc.public_subnets
     alb_security_group_id = module.alb.alb_security_group_id
 
@@ -45,6 +45,7 @@ module "cloudflare" {
     alb_dns_name              = module.alb.alb_dns_name
 
     zone_name = var.zone_name
+    zone_id   = var.zone_id
 }
 
 resource "aws_acm_certificate_validation" "this" {
