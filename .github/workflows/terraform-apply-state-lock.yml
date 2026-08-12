@@ -32,7 +32,7 @@ jobs:
         working-directory: ./terraform-state-lock
         run: |
           terraform apply \
-          --auto-aprove
+          --auto-approve
 
       
           
