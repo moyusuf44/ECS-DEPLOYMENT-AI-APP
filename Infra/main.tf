@@ -25,7 +25,6 @@ module "alb" {
 
     health_check    = var.health_check_path    
     
-    alb_security_group_id = module.alb.alb_security_group_id
     subnets               = module.vpc.public_subnets
     vpc_id                = module.vpc.vpc_id
     certificate_arn       = module.acm.certificate_arn
