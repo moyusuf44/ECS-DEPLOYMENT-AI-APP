@@ -39,7 +39,7 @@ module "acm" {
 }
 
 module "cloudflare" {
-    source = ".modules/06-cloudflare"
+    source = "./modules/06-cloudflare"
 
     domain_validation_options = module.acm.domain_validation_options
     alb_dns_name              = module.alb.alb_dns_name
