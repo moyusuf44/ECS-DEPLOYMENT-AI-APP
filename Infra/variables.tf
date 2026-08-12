@@ -48,5 +48,9 @@ variable "cidr_block" {
 }
 
 variable "cloudflare_api_token" {
-  type        = string
+    type = string
+}
+
+variable "health_check_path" {
+    type = string
 }

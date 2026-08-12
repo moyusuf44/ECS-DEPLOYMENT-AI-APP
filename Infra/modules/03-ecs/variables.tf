@@ -29,3 +29,11 @@ variable "security_groups" {
 variable "target_group_arn" {
     type = string
 }
+
+variable "vpc_id" {
+    type = string 
+}
+
+variable "subnet_ids" {
+    type = list(string)
+}

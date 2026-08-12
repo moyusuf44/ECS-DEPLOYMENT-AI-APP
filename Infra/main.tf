@@ -6,12 +6,13 @@ module "vpc" {
 module "ecs" {
     source = "./modules/03-ecs"
 
-    vpc_id           = module.vpc.vpc_id
-    subnets          = module.vpc.public_subnets
-    target_group_arn = module.alb.target_group   
-    security_groups  = module.vpc.ecs_security_group_id    
-    subnet_ids       = module.vpc.public_subnets
-    
+    vpc_id                = module.vpc.vpc_id
+    subnets               = module.vpc.public_subnets
+    target_group_arn      = module.alb.target_group   
+    security_groups       = module.vpc.ecs_security_group_id    
+    subnet_ids            = module.vpc.public_subnets
+    alb_security_group_id = module.alb.alb_security_group_id
+
     cpu           = var.cpu
     memory        = var.memory
     image_id      = var.image_id
@@ -30,7 +31,7 @@ module "alb" {
 }
 
 module "acm" {
-    source "./modules/05-acm"
+    source = "./modules/05-acm"
 
     domain_name = var.domain_name
     subdomain   = var.subdomain
@@ -38,7 +39,7 @@ module "acm" {
 }
 
 module "cloudflare" {
-    source ".modules/06-cloudflare"
+    source = ".modules/06-cloudflare"
 
     domain_validation_options = module.acm.domain_validation_options
     alb_dns_name              = module.alb.alb_dns_name

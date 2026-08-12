@@ -38,5 +38,4 @@ jobs:
           terraform apply \
           -target=module.ecr \
           --auto-approve \
-          -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v1"  
+          
