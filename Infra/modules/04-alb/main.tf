@@ -17,7 +17,7 @@ resource "aws_lb_target_group" "this" {
         create_before_destroy = true # enables target to be deleted on apply and created anew
     }
 
-    health_check {
+    health_check_path {
         path    = var.health_check_path
         port    = "8000"
         matcher = "200-399"

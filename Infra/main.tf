@@ -23,7 +23,7 @@ module "ecs" {
 module "alb" {
     source = "./modules/04-alb"
 
-    health_check    = var.health_check_path    
+    health_check_path = var.health_check_path    
     
     subnets               = module.vpc.public_subnets
     vpc_id                = module.vpc.vpc_id
