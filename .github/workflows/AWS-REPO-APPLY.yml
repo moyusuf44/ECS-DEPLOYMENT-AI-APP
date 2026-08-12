@@ -32,5 +32,5 @@ jobs:
         working-directory: ./Infra
         run: |
           terraform apply \
-          -target=module. \
+          -target=module.ecr \
           --auto-approve 
