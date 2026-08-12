@@ -50,7 +50,3 @@ variable "cidr_block" {
 variable "cloudflare_api_token" {
     type = string
 }
-
-variable "vpc_id" {
-    type = string
-}
