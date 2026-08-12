@@ -30,7 +30,9 @@ jobs:
 
       - name: Terraform Apply DynamoDB Table
         working-directory: ./terraform-state-lock
-        run: terraform apply --auto-aprove
+        run: |
+          terraform apply \
+          --auto-aprove
 
       
           
