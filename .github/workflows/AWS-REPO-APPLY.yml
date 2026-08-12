@@ -27,3 +27,10 @@ jobs:
       - name: Terraform Init
         working-directory: ./Infra
         run: terraform init
+
+      - name: Terraform Apply Create Repo
+        working-directory: ./Infra
+        run: |
+          terraform apply \
+          -target=module. \
+          --auto-approve 
