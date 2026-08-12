@@ -3,6 +3,11 @@ module "vpc" {
  
 }
 
+module "ecr" {
+  source = "./modules/02-ecr"
+
+}
+
 module "ecs" {
     source = "./modules/03-ecs"
 
