@@ -29,6 +29,23 @@ resource "aws_ecs_task_definition" "this" {
                     hostPort      = 8000
                 }
             ]
+
+            secrets = [
+            {
+            name      = "OPENAI_API_KEY"
+            valueFrom = aws_secretsmanager_secret.openai_api_key.arn
+            }
+            ]
+
+            logConfiguration = {
+            logDriver = "awslogs"
+
+            options = {
+                awslogs-group         = "/ecs/ai-app"
+                awslogs-region        = "eu-north-1"
+                awslogs-stream-prefix = "ecs"
+                }
+            }
         }
     ]) 
 }

@@ -8,7 +8,12 @@ load_dotenv()
 
 app = FastAPI()
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+api_key = os.getenv("0PEN_AI_KEY")
+
+if not api_key:
+    raise RuntimeError("OPEN_AI_KEY enviroment variable not set")
+
+client = OpenAI(api_key=api_key)
 
 
 conversations = {}
