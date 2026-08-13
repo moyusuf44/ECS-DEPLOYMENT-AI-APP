@@ -1,6 +1,6 @@
 cpu               = "512"
 memory            = "1024"
-desired_count     = "0"
+desired_count     = "1"
 cluster_name      = "ai-app-cluster"
 health_check_path = "/"
 domain_name       = "moyusufs-aiapp.com"
