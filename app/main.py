@@ -8,7 +8,7 @@ load_dotenv()
 
 app = FastAPI()
 
-api_key = os.getenv("0PENAI_API_KEY")
+api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
     raise RuntimeError("OPENAI_API_KEY enviroment variable not set")

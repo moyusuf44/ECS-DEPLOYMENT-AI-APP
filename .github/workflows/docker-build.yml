@@ -22,14 +22,14 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build Docker image
-        run: docker build -t ai-app:v3 .
+        run: docker build -t ai-app:v4 .
 
       - name: Tag Docker Image
         run: |
-          docker tag ai-app:v3 \
-          592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v3
+          docker tag ai-app:v4 \
+          592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v4
 
       - name: Push Docker Image
         run: |
           docker push \
-          592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v3
+          592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v4
