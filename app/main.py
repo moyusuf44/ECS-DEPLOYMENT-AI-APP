@@ -24,7 +24,7 @@ class ChatRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {"status" : "running"}
+    return RedirectResponse(url="/docs")
 
 @app.get("/health")
 def health():
