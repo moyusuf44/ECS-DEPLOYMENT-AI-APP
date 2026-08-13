@@ -35,12 +35,12 @@ jobs:
           -target=module.acm \
           --auto-approve \
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v2"  
+          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v3"  
 
       - name: Terraform Apply full (stage 2)
         working-directory: ./Infra
         run: |
           terraform apply \
           --auto-approve \
-          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v2" \
+          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v3" \
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}"

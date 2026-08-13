@@ -35,5 +35,5 @@ jobs:
         run: |
           terraform plan \
           -target=module.acm \
-          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v2" \
+          -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v3" \
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" 
