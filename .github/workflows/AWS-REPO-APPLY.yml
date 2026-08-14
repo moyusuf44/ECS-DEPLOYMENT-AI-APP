@@ -37,3 +37,4 @@ jobs:
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
           -var="openai_api_key=${{ secrets.openai_api_key }}" \
           -var="image_id=bootstrap"
+
