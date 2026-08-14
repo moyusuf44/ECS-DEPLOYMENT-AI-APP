@@ -1,5 +1,6 @@
 resource "aws_secretsmanager_secret" "openai_api_key" {
   name = "ai-app/openai-api-key"
+
 }
 
 resource "aws_iam_role_policy" "secrets_manager" {
@@ -18,4 +19,9 @@ resource "aws_iam_role_policy" "secrets_manager" {
       }
     ]
   })
+}
+
+resource "aws_secretsmanager_secret_version" "openai_api_key" {
+  secret_id     = aws_secretsmanager_secret.openai_api_key.id
+  secret_string = var.openai_api_key
 }

@@ -50,3 +50,8 @@ variable "cidr_block" {
 variable "cloudflare_api_token" {
     type = string
 }
+
+variable "openai_api_key" {
+  type      = string
+  sensitive = true
+}

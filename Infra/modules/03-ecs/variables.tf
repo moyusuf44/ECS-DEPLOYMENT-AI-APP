@@ -41,3 +41,8 @@ variable "subnet_ids" {
 variable "alb_security_group_id" {
     type = string
 }
+
+variable "openai_api_key" {
+  type      = string
+  sensitive = true
+}

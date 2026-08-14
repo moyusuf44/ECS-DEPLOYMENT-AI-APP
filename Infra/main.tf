@@ -18,11 +18,12 @@ module "ecs" {
     subnet_ids            = module.vpc.public_subnets
     alb_security_group_id = module.alb.alb_security_group_id
 
-    cpu           = var.cpu
-    memory        = var.memory
-    image_id      = var.image_id
-    desired_count = var.desired_count
-    cluster_name  = var.cluster_name
+    cpu            = var.cpu
+    memory         = var.memory
+    image_id       = var.image_id
+    desired_count  = var.desired_count
+    cluster_name   = var.cluster_name
+    openai_api_key = var.openai_api_key
 }
 
 module "alb" {
