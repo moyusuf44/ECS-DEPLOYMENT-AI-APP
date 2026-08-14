@@ -35,5 +35,5 @@ jobs:
           -target=module.ecr \
           --auto-approve \
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-          -var="cloudflare_api_token=${{ secrets.OPENAI_API_KEY }}" \
+          -var="openai_api_key=${{ secrets.openai_api_key }}" \
           -var="image_id=bootstrap"

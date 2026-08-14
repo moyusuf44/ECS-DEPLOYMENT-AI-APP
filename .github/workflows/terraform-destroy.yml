@@ -34,5 +34,5 @@ jobs:
           terraform destroy \
           --auto-approve \
           -var="cloudflare_api_token=${{ secrets.CLOUDFLARE_API_TOKEN }}" \
-          -var="cloudflare_api_token=${{ secrets.OPENAI_API_KEY }}" \
+          -var="openai_api_key=${{ secrets.openai_api_key }}" \
           -var="image_id=592587463331.dkr.ecr.eu-north-1.amazonaws.com/ai-app:v1"  
