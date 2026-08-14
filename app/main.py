@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from openai import OpenAI 
 from dotenv import load_dotenv
+from fastapi.responses import RedirectResponse
 import os 
 
 load_dotenv()
@@ -11,7 +12,7 @@ app = FastAPI()
 api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
-    raise RuntimeError("OPENAI_API_KEY enviroment variable not set")
+    raise RuntimeError("OPENAI_API_KEY environment variable not set")
 
 client = OpenAI(api_key=api_key)
 
